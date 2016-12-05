@@ -13,6 +13,7 @@
     <modules>
         <module>quartz-app</module>
         <module>quartz-starter</module>
+        <module>boot-web</module>
     </modules>
 
 </project>

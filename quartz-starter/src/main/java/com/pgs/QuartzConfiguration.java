@@ -1,4 +1,4 @@
-package com.gm;
+package com.pgs;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
@@ -11,7 +11,6 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 import javax.sql.DataSource;
 import java.io.IOException;
-import java.io.PrintStream;
 import java.util.Properties;
 
 /**
@@ -33,13 +32,11 @@ public class QuartzConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public SchedulerFactoryBean schedulerFactoryBean(DataSource dataSource /*, JobFactory jobFactory,
-                                                     @Qualifier("sampleJobTrigger") Trigger sampleJobTrigger*/) throws IOException {
+    public SchedulerFactoryBean schedulerFactoryBean(DataSource dataSource) throws IOException {
         SchedulerFactoryBean factory = new SchedulerFactoryBean();
         factory.setOverwriteExistingJobs(true);
         factory.setDataSource(dataSource);
         factory.setQuartzProperties(quartzProperties());
         return factory;
     }
-    //https://github.com/davidkiss/spring-boot-quartz-demo/blob/master/src/main/java/com/kaviddiss/bootquartz/SchedulerConfig.java
 }
